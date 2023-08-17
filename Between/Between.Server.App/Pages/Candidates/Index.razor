@@ -1,0 +1,59 @@
+﻿@page "/Candidates"
+@page "/Candidates/Index"
+@page "/Candidates/List"
+@using Between.Server.App.Models.Candidates;
+@using Microsoft.EntityFrameworkCore;
+@inject CandidateDbContext _context;
+
+<PageTitle>Candidate List</PageTitle>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="/Candidates/Create">Create New</a>
+</p>
+
+@if (Candidates is null)
+{
+    <div>Loading...</div>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>IsEnrollment</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Candidates)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>
+                        <input class="check-box" type="checkbox" checked="@item.IsEnrollment" />
+                    </td>
+                    <td>
+                        <a href="/Candidates/Edit/@item.Id">Edit</a> |
+                        <a href="/Candidates/Details/@item.Id">Details</a> |
+                        <a href="/Candidates/Delete/@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    // 현재 페이지에서 사용할 모델 또는 컬렉션
+    private Candidate[]? Candidates { get; set; }
+
+    // 구성 요소가 시작할 준비가 되었을 때 호출
+    protected override async Task OnInitializedAsync()
+    {
+        Candidates = await _context.Candidate.ToArrayAsync();
+    }
+}

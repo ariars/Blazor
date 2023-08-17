@@ -5,12 +5,12 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Between.Server.App", "Between.Server.App\Between.Server.App.csproj", "{986D1625-8B3A-4061-80B2-C4FB61C24DBB}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Between.SqlServer", "Between.SqlServer\Between.SqlServer.sqlproj", "{C96D4BD7-02E4-4D0B-879D-942BFCFC1C06}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{D1664D4D-4B07-4968-86AD-C6F628786798}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
 	EndProjectSection
-EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Between.SqlServer", "Between.SqlServer\Between.SqlServer.sqlproj", "{C96D4BD7-02E4-4D0B-879D-942BFCFC1C06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
