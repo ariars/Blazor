@@ -11,7 +11,7 @@ namespace Between.Server.App.Models.Candidates
             {
                 var services = serviceScope.ServiceProvider;
                 var candidateDbContext = services.GetRequiredService<CandidateDbContext>();
-                if (!candidateDbContext.Candidate.Any())
+                if (candidateDbContext.Candidate is not null && !candidateDbContext.Candidate.Any())
                 {
                     candidateDbContext.Candidate.Add(new Candidate { FirstName = "길동", LastName = "홍", IsEnrollment = false });
                     candidateDbContext.Candidate.Add(new Candidate { FirstName = "두산", LastName = "백", IsEnrollment = false });

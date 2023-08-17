@@ -54,6 +54,9 @@ else
     // 구성 요소가 시작할 준비가 되었을 때 호출
     protected override async Task OnInitializedAsync()
     {
-        Candidates = await _context.Candidate.ToArrayAsync();
+        if (_context.Candidate is not null)
+        {
+            Candidates = await _context.Candidate.ToArrayAsync();
+        }
     }
 }

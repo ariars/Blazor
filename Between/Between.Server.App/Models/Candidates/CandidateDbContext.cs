@@ -15,6 +15,6 @@ public class CandidateDbContext : DbContext
         // Empty
     }
 
-    public DbSet<Candidate>? Candidate { get; set; } = null;
+    public DbSet<Candidate>? Candidate { get; set; }
 }
 }
