@@ -1,6 +1,7 @@
 using Between.Server.App.Areas.Identity;
 using Between.Server.App.Data;
 using Between.Server.App.Models.Candidates;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddSingleton<WeatherForecastService>();
 
@@ -46,6 +48,11 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapAreaControllerRoute(
+    name: "default",
+    areaName: "",
+    pattern: "{controller=Home/{action=Index}/{id?}"
+);
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

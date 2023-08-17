@@ -1,0 +1,305 @@
+﻿@model IEnumerable<Between.Server.App.Models.Candidates.Candidate>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameSuffix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AliasNames)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.County)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimaryPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondaryPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobilePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthCounty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicenseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicenseState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverLicenseExpiration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficeAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficeCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficeState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkFax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthPlace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsCitizen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaritalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EyeColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HairColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightFeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeightInches)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessStructure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessStructureOther)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhysicalMarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsEnrollment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameSuffix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AliasNames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.County)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondaryPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobilePhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthCounty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverLicenseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverLicenseState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverLicenseExpiration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkFax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsCitizen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaritalStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EyeColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HairColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightFeet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeightInches)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessStructure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessStructureOther)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicalMarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEnrollment)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
