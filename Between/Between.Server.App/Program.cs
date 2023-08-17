@@ -50,8 +50,8 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapAreaControllerRoute(
     name: "default",
-    areaName: "",
-    pattern: "{controller=Home/{action=Index}/{id?}"
+    areaName: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
 );
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

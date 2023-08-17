@@ -1,7 +1,5 @@
 .vs
 bin
 obj
-.dbmdl
-.jfm
-/Between/Between.SqlServer/Between.SqlServer.dbmdl
+*.dbmdl
 *.jfm
