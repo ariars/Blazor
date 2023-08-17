@@ -105,7 +105,8 @@ public class Candidate : CandidateEntity
 
     // Driver's License Number: driver_license_number
     [StringLength(35)]
-    public string? DriverLicenseNumber { get; set; }
+    public string? DriverLicenseNumber { get; set; }   
+        
 
     // State Issued: driver_license_state
     [StringLength(2)]
