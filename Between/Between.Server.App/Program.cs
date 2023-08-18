@@ -49,11 +49,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapDefaultControllerRoute();
 app.MapAreaControllerRoute(
-    name: "default",
-    areaName: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"
+    name: "area",
+    areaName: "area",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 );
+
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
