@@ -1,10 +1,11 @@
-﻿@page "/Candidates"
-@page "/Candidates/Index"
-@page "/Candidates/List"
+﻿@page "/Candidates/{Page:int?}"
+@page "/Candidates/Index/{Page:int?}"
+@page "/Candidates/List/{Page:int?}"
+
 @using Between.Server.App.Models.Candidates;
 @using Microsoft.EntityFrameworkCore;
-@* @inject CandidateDbContext _context; *@
 @inject IDbContextFactory<CandidateDbContext> _contextFactory;
+@inject NavigationManager NavigationManager
 
 <PageTitle>Candidate List</PageTitle>
 <h1>Index</h1>
@@ -46,27 +47,74 @@ else
             }
         </tbody>
     </table>
+
+<ul class="pagination">
+    @for (int i = 0; i < PageCount; i++)
+    {
+        <li class="page-item @((i == PageIndex) ? "active" : "")">
+            <a class="page-link" href="/Candidates/@(i +1)">@(i + 1)</a>
+        </li>
+    }
+</ul>
 }
 
 @code {
     // 현재 페이지에서 사용할 모델 또는 컬렉션
     private Candidate[]? Candidates { get; set; }
 
+    // 페이지 사이즈 : 한 페이지에 몇 개의 레코드를 보여줄건지 결정
+    public int PageSize { get; set; } = 4;
+
+    // 페이지 번호: 현재 보여줄 페이지 번호: 1 페이지, 2 페이지, ...
+    [Parameter]
+    public int? Page { get; set; }
+
+    // // 페이지 인덱스: 현재 보여줄 페이지 번호의 인덱스(PageNumber - 1)
+    public int PageIndex { get; set; }
+
+    // 총 몇 개의 페이지가 만들어지는지: Math.Ceiling(총 레코드 수 / 10(한 페이지에서 보여줄))
+    public int PageCount { get; set; }
+
+    // 레코드 카운트: 현재 테이블에 몇 개의 레코드가 있는지 지정
+    public int RecordCount { get; set; }
+
     // 구성 요소가 시작할 준비가 되었을 때 호출
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
+    //protected override async Task OnInitializedAsync()
     {
+        if (Page is null or < 1)
+        {
+            //Page = 1;
+            NavigationManager.NavigateTo("/Candidates/1");
+            return;
+        }
+
+        PageIndex = Page.Value - 1;
+
         using (var context = _contextFactory.CreateDbContext())
         {
             if (context.Candidate is not null)
             {
-                Candidates = await context.Candidate.ToArrayAsync();
-            }
-            
-        }
+                RecordCount = await context.Candidate.CountAsync();
+                PageCount = Convert.ToInt32(Math.Ceiling(RecordCount / (double)PageSize));
 
-        // if (_context.Candidate is not null)
-        // {
-        //     Candidates = await _context.Candidate.ToArrayAsync();
-        // }
+                if (PageCount == 0)
+                {
+                    PageCount = 1; // 데이터가 없으면 1 페이지로 초기화
+                }
+
+                if (Page > PageCount)
+                {
+                    NavigationManager.NavigateTo($"/Candidates/List/{PageCount}");
+                    return;
+                }
+
+                Candidates = await context.Candidate
+                    .OrderBy(x => x.FirstName)
+                    .Skip(PageIndex * PageSize)
+                    .Take(PageSize)
+                    .ToArrayAsync();
+            }            
+        }
     }
 }
