@@ -1,0 +1,110 @@
+﻿@page "/Candidates/CandidateNames/Edit/{Id:int?}"
+@inject IDbContextFactory<CandidateDbContext> _ContextFactory
+@inject NavigationManager NavigationManager
+
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+@inject ProtectedLocalStorage ProtectedLocalStorage
+
+<PageTitle>CandidateName Edit</PageTitle>
+
+<h1>Edit</h1>
+<h4>CandidateName</h4>
+<hr />
+
+@if (!String.IsNullOrEmpty(StatusMessage))
+{
+    var statusMessageClass = StatusMessage.StartsWith("Error") ? "danger" : "success";
+    <div class="alert alert-@statusMessageClass alert-dismissible fade show" role="alert">
+        @StatusMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+}
+
+@if (Model is null && !Busy)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+            <sapn aria-hidden="true">&times;</sapn>
+        </button>
+        Not Found
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <Between.Server.App.Pages.Candidates.CandidateNames.Components.EditorForm Model="@Model" Busy="@Busy" IsEdit="true" OnSubmitCallback="@OnSubmitCallback" OnCancelCallback="@GotoIndexPage" />
+        </div>
+    </div>
+}
+
+<div>
+    <a href="/Candidate">Back to List</a>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public CandidateName? Model { get; set; }
+
+    public bool Busy { get; set; }
+
+    public string? StatusMessage { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Busy = true;
+
+        try
+        {
+            using var ctx = _ContextFactory.CreateDbContext();
+            Model = await ctx.CandidateName.AsNoTracking().FirstOrDefaultAsync(x => x.Id == Id);
+        }
+        finally
+        {
+            Busy = false;
+        }
+    }
+
+    protected async Task OnSubmitCallback(bool isValid)
+    {
+        if (Model is null || !isValid || Busy)
+        {
+            StatusMessage = "";
+            return;
+        }
+
+        Busy = true;
+
+        try
+        {
+            using var ctx = _ContextFactory.CreateDbContext();
+            ctx.CandidateName.Update(Model);
+            await ctx.SaveChangesAsync();
+            await GotoIndexPage();
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            StatusMessage = $"Error - 이미 변경되었습니다. 새로고침 후 다시 시도하세요.";
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Error - {ex.Message}";
+        }
+        finally
+        {
+            Busy = false;
+        }
+    }
+
+    private async Task GotoIndexPage()
+    {
+        var result = await ProtectedLocalStorage.GetAsync<int>("Page");
+        var currentPage = result.Success ? result.Value : 1;
+
+        NavigationManager.NavigateTo($"/Candidates/CandidateNames/{currentPage}");
+    }
+
+}
