@@ -52,30 +52,30 @@ else
         </tbody>
     </table>
 
-<ul class="pagination">
-    <li class="page-item @((Page == 1) ? "disabled" : "")">
-        <a class="page-link" href="/Candidates/@(Page - 1)">Prev</a>
-    </li>
-    @{
-        int start = PageIndex / (int)5 * 5 + 1;
-        int end = (PageIndex / (int)5 + 1) * 5;
-    }
-    @for (int i = start; i <= end; i++)
-    {
-        var currentNumber = i;
-
-        if (i > PageCount)
-        {
-            break;
-        }
-        <li class="page-item @((i == Page) ? "active" : "")">
-            <a class="page-link" href="/Candidates/@(i)">@(i)</a>
+    <ul class="pagination">
+        <li class="page-item @((Page == 1) ? "disabled" : "")">
+            <a class="page-link" href="/Candidates/@(Page - 1)">Prev</a>
         </li>
-    }
-    <li class="page-item @((Page == PageCount) ? "disabled" : "")">
-        <a class="page-link" href="/Candidates/@(Page + 1)">Next</a>
-    </li>
-</ul>
+        @{
+            int start = PageIndex / (int)5 * 5 + 1;
+            int end = (PageIndex / (int)5 + 1) * 5;
+        }
+        @for (int i = start; i <= end; i++)
+        {
+            var currentNumber = i;
+
+            if (i > PageCount)
+            {
+                break;
+            }
+            <li class="page-item @((i == Page) ? "active" : "")">
+                <a class="page-link" href="/Candidates/@(i)">@(i)</a>
+            </li>
+        }
+        <li class="page-item @((Page == PageCount) ? "disabled" : "")">
+            <a class="page-link" href="/Candidates/@(Page + 1)">Next</a>
+        </li>
+    </ul>
 }
 
 @code {

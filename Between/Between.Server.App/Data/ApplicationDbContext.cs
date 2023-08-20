@@ -1,10 +1,11 @@
-﻿using Between.Server.App.Models.Buffets;
+﻿using Between.Server.App.Areas.Identity.Models;
+using Between.Server.App.Models.Buffets;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Between.Server.App.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
