@@ -1,4 +1,5 @@
 ﻿using Between.Server.App.Data;
+using Between.Server.App.Models.Candidates.CandidateIncomes;
 using Between.Server.App.Models.Candidates.CandidateNames;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,5 +20,9 @@ namespace Between.Server.App.Models.Candidates
         public DbSet<Candidate>? Candidate { get; set; }
 
         public DbSet<CandidateName>? CandidateName { get; set; }
+
+        public DbSet<CandidateIncome>? CandidateIncome { get; set; }
+
+        
     }
 }
