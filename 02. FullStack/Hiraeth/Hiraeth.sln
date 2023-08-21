@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiraeth.Blazor", "Hiraeth.Blazor\Hiraeth.Blazor.csproj", "{ECC88E6D-EF25-4D1F-B6FF-7772147DD407}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hiraeth.IdeaApp", "Hiraeth.IdeaApp\Hiraeth.IdeaApp.csproj", "{110EF45B-BF36-473B-B657-AB56728716A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{ECC88E6D-EF25-4D1F-B6FF-7772147DD407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC88E6D-EF25-4D1F-B6FF-7772147DD407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC88E6D-EF25-4D1F-B6FF-7772147DD407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{110EF45B-BF36-473B-B657-AB56728716A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110EF45B-BF36-473B-B657-AB56728716A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110EF45B-BF36-473B-B657-AB56728716A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110EF45B-BF36-473B-B657-AB56728716A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
