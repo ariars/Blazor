@@ -31,7 +31,7 @@
             If YES, list the additional name(s) below and specify dates of use for each name (include maiden name, aliases, nicknames, other name changes, legal or otherwise).
         </div>
     </div>
-}
+
 
 <div class="row">
     <div class="col-md-12">
@@ -59,6 +59,9 @@
                     <th>
                         Middle Name
                     </th>
+                    <th>
+                        UesrId
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -75,6 +78,9 @@
                         <td>
                             @m.MiddleName
                         </td>
+                        <td>
+                            @m.UserId
+                        </td>
                         <td class="text-center">
                             <input type="button" class="btn btn-danger btn-sm" value="Delete"
                             @onclick="() => DeleteBy(m)" />
@@ -87,7 +93,16 @@
 }
 
 @code {
+    [Parameter]
     public string UserId { get; set; } = "13A1632E-909C-4956-8CBE-FFD0D11F47B4";
+
+    // names 를 관리하는지 여부
+    [Parameter]
+    public bool UseOtherNames
+{
+    get { return blnNames; }
+    set { blnNames = value; }
+}
 
     private bool blnNames = true;
 
