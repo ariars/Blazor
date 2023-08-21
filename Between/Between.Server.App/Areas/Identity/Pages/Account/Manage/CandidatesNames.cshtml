@@ -1,0 +1,13 @@
+﻿@page
+@model Between.Server.App.Areas.Identity.Pages.Account.Manage.CandidatesNamesModel
+@{
+}
+
+@section scripts {
+    <base href="~/" />
+    <script src="/_framework/blazor.server.js"></script>
+}
+
+<component 
+    type="typeof(Between.Server.App.Pages.Candidates.CandidatesNames.Manage)"
+    render-mode="ServerPrerendered" />
